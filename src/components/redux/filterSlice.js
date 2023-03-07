@@ -4,7 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
     initialState:'',
     reducers:{
 changeFilter(_,action){
+    console.log(action);
     return action.payload
+    
 }
     }
 }) 

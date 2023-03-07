@@ -1,12 +1,12 @@
 
 import { Item, Btn, NumberText } from './ContactList.styled';
 import { useSelector,useDispatch } from 'react-redux';
-import { getAllContacts } from 'components/redux/selectors';
+import { getFilterContacts } from 'components/redux/selectors';
 import { removeContact } from 'components/redux/contactsSlice';
 
 
 export const ContactList = () => {
-  const contacts= useSelector(getAllContacts)
+  const contacts= useSelector(getFilterContacts)
 
   const dispatch= useDispatch();
   return (

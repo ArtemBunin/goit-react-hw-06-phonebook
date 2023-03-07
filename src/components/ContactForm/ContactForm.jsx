@@ -6,14 +6,17 @@ import { addContact } from 'components/redux/contactsSlice';
 import { nanoid } from 'nanoid';
 import { Form,Input,FormBtn } from './ContactForm.styled';
 
-export const ContactForm=({addPerson})=>{
+export const ContactForm=()=>{
   const [name,SetName]=useState('');
   const [number,SetNumber]=useState('')
 const contacts= useSelector(getAllContacts)
 const dispatch = useDispatch();
 
+
   const handleChange = e => {
     const {name,value}= e.currentTarget
+
+   
     switch(name){
       case('name'):{
         SetName(value)
@@ -26,12 +29,14 @@ const dispatch = useDispatch();
       default:{
         return
       }
+     
     }};
-    const duplicateName = value =>
+  
+    const duplicateName = (value) =>
     contacts.find(({ name }) => name.toLowerCase() === value.toLowerCase());
-    const handleSubmit = (evt,value) => {
+    const handleSubmit = (evt) => {
           evt.preventDefault();
-          duplicateName?alert(`${value} already in contacts.`):
+          duplicateName(name)?alert(`${name} already in contacts.`):
         dispatch(addContact({ name,number, id: nanoid() }));
         SetName('')
         SetNumber('')
